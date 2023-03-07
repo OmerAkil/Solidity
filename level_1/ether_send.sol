@@ -30,8 +30,8 @@ contract etherSend {
     fallback() => you send data + eth.
     */
 
-    uint receiveCount = 0;
-    uint fallbackCount = 0;
+    uint public receiveCount = 0;
+    uint public fallbackCount = 0;
     receive() external payable { 
         receiveCount++;         // if you only send eth receiveCount will increase.
     }
