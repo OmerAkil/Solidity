@@ -11,7 +11,7 @@ library Human {
 
     uint constant idMod = 10 ** 11;
 
-    function newborn(string memory _name) public pure returns(Person memory, uint256) {
+    function newborn(string calldata _name) public pure returns(Person memory, uint256) {
         uint rand = uint256(keccak256(abi.encodePacked(_name)));
         uint newId = rand % idMod;
         return(Person(_name, 0, true), newId);
@@ -48,7 +48,7 @@ library Human {
 contract life {
     mapping (uint => Human.Person) people;
 
-    function birth(string memory _name) external returns(Human.Person memory, uint256) {
+    function birth(string calldata _name) external returns(Human.Person memory, uint256) {
         Human.Person memory newborn;
         uint256 Id;
         (newborn, Id) = Human.newborn(_name);
